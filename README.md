@@ -16,10 +16,12 @@ A quick and easy online calculator for Pokemon GO XP Levels!
 * Mobile Friendly (Built with Bootstrap)
 * Constantly Being Updated
 
-## Next Update Progression
+## Next Updates Progression
 * Choose which Pokemon to use for Stats (Currently Pidgey) - 0%
 * Redesigned Interface (Fully Custom, Moving away from Bootstrap) - 0%
 * Google Analytics - 0%
+* Changelog Page - 50%
+* Next Update Progression Page - 50%
 
 ## Known Issues
 * None yet!
