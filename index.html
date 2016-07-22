@@ -28,10 +28,10 @@
     		<p class="lead">The online tool to help you level up on Pokemon Go!</p>
   		</div>
 		</div>
-		<p>What level do you want to get to? <input class="form-control" id="getTo" type="number" min=2 max=40></p>
-		<p>What level are you currently? <input class="form-control" id="getFrom" type="number" min=1 max=39></p>
-		<p>How much XP have you already got towards your next level? <input class="form-control" id="currentTowards" type="number" min=0 max=5000000></p>
-		<button class="btn btn-success-outline btn-lg" onclick="calculateEvols(document.getElementById('getTo').value, document.getElementById('getFrom').value, document.getElementById('currentTowards').value)">Calculate</button>
+		<p>What level do you want to get to? <input class="form-control" id="getTo" type="number" min=2 max=40 value=2></p>
+		<p>What level are you currently? <input class="form-control" id="getFrom" type="number" min=1 max=39 value=1></p>
+		<p>How much XP have you already got towards your next level? <input class="form-control" id="currentTowards" type="number" min=0 max=5000000 value=0></p>
+		<button class="btn btn-success-outline btn-lg" onclick="calculateEvols($('#getTo').val(), $('#getFrom').val(), $('#currentTowards').val())">Calculate</button>
 		<table class="table table-bordered table-hover" style="margin-top: 10px">
 			<thead>
 				<tr>
