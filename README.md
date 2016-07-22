@@ -15,3 +15,5 @@ A quick and easy online calculator for Pokemon GO XP Levels!
 * Open Source
 * Mobile Friendly (Built with Bootstrap)
 * Constantly Being Updated
+
+## https://featuredepix.github.io/pokexp/
