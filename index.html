@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+   	meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>PokeXP</title>
+		<style>
+			table tr td, table tr th {
+				text-align: center;
+			}
+			table tr td:first-child {
+				text-align: right;
+			}
+			.jumbotron {
+				background-image: url("http://static1.techinsider.io/image/5747015c52bcd063018c54b5-1434-717/screen%20shot%202016-01-25%20at%2012.52.59%20pm.png");
+				background-size: cover;
+				color: white !important;
+			}
+		</style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+  	  <div class="container">
+    	  <h1 class="display-3">PokeXP</h1>
+    		<p class="lead">The online tool to help you level up on Pokemon Go!</p>
+  		</div>
+		</div>
+		<p>What level do you want to get to? <input class="form-control" id="getTo" type="number" min=2 max=40></p>
+		<p>What level are you currently? <input class="form-control" id="getFrom" type="number" min=1 max=39></p>
+		<p>How much XP have you already got towards your next level? <input class="form-control" id="currentTowards" type="number" min=0 max=5000000></p>
+		<button class="btn btn-success-outline btn-lg" onclick="calculateEvols(document.getElementById('getTo').value, document.getElementById('getFrom').value, document.getElementById('currentTowards').value)">Calculate</button>
+		<table class="table table-bordered table-hover" style="margin-top: 10px">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Without Lucky Egg</th>
+					<th>With Lucky Egg</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Total XP</td>
+					<td id="totalXpW"></td>
+					<td id="totalXp"></td>
+				</tr>
+				<tr>
+					<td>Evolutions</td>
+					<td id="totalEvolW"></td>
+					<td id="totalEvol"></td>
+				</tr>
+				<tr>
+					<td>Pidgey Candy</td>
+					<td id="totalPidgeyCandyW"></td>
+					<td id="totalPidgeyCandy"></td>
+				</tr>
+				<tr>
+					<td>PokeStops</td>
+					<td id="totalStopW"></td>
+					<td id="totalStop"></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+		<script>
+			function numberWithCommas(x) {
+    		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			var lvls = [0,1000,3000,6000,10000,15000,21000,28000,36000,45000,55000,65000,75000,85000,100000,120000,140000,160000,185000,210000,260000,335000,435000,560000,710000,900000,1100000,1350000,1650000,2000000,25000000,3000000,3750000,4750000,6000000,7500000,9500000,12000000,15000000,20000000];
+			function calculateEvols(to, from, currentTowards) {
+				if(from > 40) {
+					from = 40;
+					$('#getFrom').val(from);
+				}
+				if(to > 40) {
+					to = 40;
+					$('#getTo').val(to);
+				}
+				if(from == 0) {
+					from = 1;
+					$('#getFrom').val(from);
+				}
+				if(to == 0) {
+					to = 10;
+					$('#getTo').val(to);
+				}
+				if(from >= to) {
+					from = to - 1;
+					$('#getFrom').val(from);
+				}
+				var currentXp = lvls[from-1];
+				var neededXp = lvls[to-1];
+				var netXp = neededXp - currentXp - currentTowards;
+				$('#totalXpW').html(numberWithCommas(netXp) + " XP");
+				$('#totalXp').html(numberWithCommas(netXp) + " XP");
+				$('#totalEvolW').html(numberWithCommas(Math.ceil(netXp/500)));
+				$('#totalEvol').html(numberWithCommas(Math.ceil(netXp/1000)));
+				$('#totalPidgeyCandyW').html(numberWithCommas(Math.ceil((netXp/500)*12)));
+				$('#totalPidgeyCandy').html(numberWithCommas(Math.ceil((netXp/1000)*12)));
+				$('#totalStopW').html(numberWithCommas(Math.ceil(netXp/50)));
+				$('#totalStop').html(numberWithCommas(Math.ceil(netXp/100)));
+			}
+		</script>
+	</body>
+</html>
