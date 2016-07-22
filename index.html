@@ -80,10 +80,6 @@
 					to = 40;
 					$('#getTo').val(to);
 				}
-				if(from >= to) {
-					from = to - 1;
-					$('#getFrom').val(from);
-				}
 				var currentXp = lvls[from-1];
 				var neededXp = lvls[to-1];
 				var netXp = neededXp - currentXp - currentTowards;
