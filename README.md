@@ -24,6 +24,6 @@ A quick and easy online calculator for Pokemon GO XP Levels!
 * Next Update Progression Page - 50%
 
 ## Known Issues
-* None yet!
+* Having your level greater than one forces the code to change it to one less than your target level. (Fixed!)
 
 ## https://featuredepix.github.io/pokexp/
